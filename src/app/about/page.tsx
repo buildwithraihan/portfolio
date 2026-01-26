@@ -43,26 +43,26 @@ import { TbTerminal2 } from "react-icons/tb";
 const CONTACT_LINKS = [
   {
     name: "Email",
-    content: "naresh.khatri2345@gmail",
-    href: "mailto:naresh.khatri2345@gmail.com",
+    content: "raihanharismanzil@gmail.com",
+    href: "mailto:raihanharismanzil@gmail.com",
     icon: <FaEnvelope height={"50px"} />,
   },
   {
     name: "Phone",
-    content: "1234567890",
-    href: "tel:1234567890",
+    content: "8208053776",
+    href: "tel:8208053776",
     icon: <FaPhone height={"50px"} />,
   },
   {
     name: "LinkedIn",
-    href: "https://www.linkedin.com/in/naresh-khatri/",
-    content: "/naresh-khatri",
+    href: "https://www.linkedin.com/in/raihan-harismanzil/",
+    content: "/raihan-harismanzil",
     icon: <FaLinkedin height={"50px"} />,
   },
   {
     name: "GitHub",
-    href: "https://github.com/Naresh-Khatri",
-    content: "/naresh-khatri",
+    href: "https://github.com/raihanharismanzil",
+    content: "/raihanharismanzil",
     icon: <FaGithub height={"50px"} />,
   },
 ];
@@ -287,7 +287,7 @@ function Page() {
           >
             <h1 className="text-3xl mb-10 lg:md-20">About me</h1>
             <p className="mb-10 text-roboto">
-              Hey there! I&apos;m Naresh, a Fullstack developer passionate about
+              Hey there! I&apos;m Raihan, a Fullstack developer passionate about
               creating meaningful digital experiences. With great in Web
               development, I thrive on turning ideas into reality through coding
               and design. My journey began with a fascination for technology and

@@ -236,9 +236,9 @@ export type Project = {
 };
 const projects: Project[] = [
   {
-    id: "codingducks",
-    category: "Coding platform",
-    title: "Coding Ducks",
+    id: "Growbie",
+    category: "smart education platform",
+    title: "Growbie",
     src: "/assets/projects-screenshots/codingducks/landing.png",
     screenshots: ["landing.png"],
     skills: {
@@ -264,7 +264,7 @@ const projects: Project[] = [
       return (
         <div>
           <TypographyP className="font-mono text-2xl text-center">
-            Coding ducks = LeetCode + CodePen + CSS Battles
+            Coding Ducks - Level Up Your Coding Skills with Fun and
           </TypographyP>
           <TypographyP className="font-mono ">
             Coding Ducks is your coding dojo — where you level up your skills,
