@@ -55,15 +55,9 @@ const CONTACT_LINKS = [
   },
   {
     name: "LinkedIn",
-    href: "https://www.linkedin.com/in/raihan-harismanzil/",
+    href: "https://www.linkedin.com/in/raihan-harismanzil-8724832ab/",
     content: "/raihan-harismanzil",
     icon: <FaLinkedin height={"50px"} />,
-  },
-  {
-    name: "GitHub",
-    href: "https://github.com/raihanharismanzil",
-    content: "/raihanharismanzil",
-    icon: <FaGithub height={"50px"} />,
   },
 ];
 
@@ -251,9 +245,9 @@ function Page() {
                 />
               </div>
               <div className="flex flex-col gap-3 lg:items-center ml-10 md:ml-20 lg:ml-0">
-                <p className="text-center text-xl">Naresh Khatri</p>
+                <p className="text-center text-xl">Raihan Harismanzil</p>
                 <div className="text-xs bg-zinc-700 w-fit px-3 py-1 rounded-full">
-                  Web Developer
+                  Full Stack Developer
                 </div>
               </div>
             </div>
@@ -285,18 +279,36 @@ function Page() {
             className="p-10 border-[.5px] rounded-md border-zinc-600"
             style={{ backdropFilter: "blur(2px)" }}
           >
-            <h1 className="text-3xl mb-10 lg:md-20">About me</h1>
-            <p className="mb-10 text-roboto">
-              Hey there! I&apos;m Raihan, a Fullstack developer passionate about
-              creating meaningful digital experiences. With great in Web
-              development, I thrive on turning ideas into reality through coding
-              and design. My journey began with a fascination for technology and
-              a drive to make a positive impact.
+            <h1 className="text-3xl mb-10 lg:md-20">About Me</h1>
+            <p className="mb-6 text-roboto leading-relaxed">
+              Hi, I&apos;m Raihan Harismanzil 👋
             </p>
-            <p className="mb-10">
-              When I&apos;m not coding, you can find me [Your
-              Interests/Hobbies], exploring new technologies, or sipping coffee
-              while brainstorming my next project.
+            <p className="mb-6 text-roboto leading-relaxed">
+              A BCA student from Jain University and probably one of the most active students on campus. 
+              If there&apos;s a hackathon, tech fest, or coding event happening, chances are I&apos;ve either 
+              participated in it or helped organize it 😄
+            </p>
+            <p className="mb-6 text-roboto leading-relaxed">
+              I&apos;ve taken part in 10+ hackathons and love building real-world web applications that go 
+              beyond just &quot;working code.&quot; I enjoy turning ideas into meaningful digital experiences and 
+              constantly pushing myself to build better, faster, and smarter.
+            </p>
+            <p className="mb-6 text-roboto leading-relaxed">
+              Beyond development, I&apos;ve been actively involved in multiple volunteering initiatives with 
+              Google and AWS, contributing to tech-driven community events. I&apos;m also a participant in the 
+              BIRAC E-YUVA program, where innovation meets entrepreneurship.
+            </p>
+            <p className="mb-6 text-roboto leading-relaxed">
+              I have a strong passion for entrepreneurship — I don&apos;t just like writing code, I like building 
+              ideas into products. I enjoy thinking about scalability, user experience, and how technology 
+              can solve real-world problems.
+            </p>
+            <p className="mb-6 text-roboto leading-relaxed">
+              Fun fact: before debugging JavaScript errors, I was winning debates in school. So yes — I can 
+              defend my logic both in code and on stage 😂
+            </p>
+            <p className="mb-10 text-roboto leading-relaxed">
+              Currently focused on full-stack development, product thinking, and continuously leveling up my skills.
             </p>
             <h1 className="text-3xl mb-10 lg:md-20">Stuff I use</h1>
             <div className="mb-5">

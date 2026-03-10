@@ -23,7 +23,7 @@ const config = {
     "Framer Motion",
   ],
   author: "Raihan Harismanzil",
-  email: "raihanharsimanzil@gmail.com",
+  email: "raihanharismanzil@gmail.com",
   site: "https://raihanharismanzil.site",
 
 
@@ -31,10 +31,8 @@ const config = {
     return this.site + "/assets/seo/og-image.png";
   },
   social: {
-
-    linkedin: "https://in.linkedin.com/in/raihan-harismanzil-8724832ab/",
+    linkedin: "https://www.linkedin.com/in/raihan-harismanzil-8724832ab/",
     instagram: "https://www.instagram.com/offx_ryan_?igsh=OXhuaHdmczV6Z2Jp",
-    github: "https://github.com/buildwithraihan",
   },
 };
 export { config };

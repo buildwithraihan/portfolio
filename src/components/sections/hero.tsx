@@ -2,7 +2,6 @@ import { cn } from "@/lib/utils";
 import Link from "next/link";
 import React from "react";
 import { Button } from "../ui/button";
-import { File } from "lucide-react";
 import {
   Tooltip,
   TooltipContent,
@@ -11,7 +10,7 @@ import {
 import { usePreloader } from "../preloader";
 import { BlurIn, BoxReveal } from "../reveal-animations";
 import ScrollDownIcon from "../scroll-down-icon";
-import { SiGithub, SiLinkedin, SiX } from "react-icons/si";
+import { SiLinkedin, SiX } from "react-icons/si";
 import { config } from "@/data/config";
 import SectionWrapper from "../ui/section-wrapper";
 
@@ -71,20 +70,6 @@ const HeroSection = () => {
               </div>
 
               <div className="mt-8 flex flex-col gap-3 w-fit">
-                {/* Resume */}
-                <Link
-                  href="https://drive.google.com/file/d/1O97WCk2DrO9x6SHOqf7LvRbmHkMgGIb4/view?usp=sharing"
-                  target="_blank"
-                  className="flex-1"
-                >
-                  <BoxReveal delay={2} width="100%">
-                    <Button className="flex items-center gap-2 w-full">
-                      <File size={24} />
-                      <p>Resume</p>
-                    </Button>
-                  </BoxReveal>
-                </Link>
-
                 <div className="md:self-start flex gap-3">
                   {/* Hire Me */}
                   <Tooltip delayDuration={300}>
@@ -104,14 +89,6 @@ const HeroSection = () => {
                       <Link href={config.social.instagram} target="_blank">
                         <Button variant="outline">
                           <SiX size={22} />
-                        </Button>
-                      </Link>
-                    )}
-
-                    {config.social.github && (
-                      <Link href={config.social.github} target="_blank">
-                        <Button variant="outline">
-                          <SiGithub size={22} />
                         </Button>
                       </Link>
                     )}
