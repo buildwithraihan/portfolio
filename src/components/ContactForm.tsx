@@ -1,6 +1,6 @@
 "use client";
-import { Check, ChevronRight, Loader2 } from "lucide-react";
-import React from "react";
+import { ChevronRight, Loader2 } from "lucide-react";
+import React, { useRef } from "react";
 import { Label } from "./ui/label";
 import { Input } from "./ui/ace-input";
 import { Textarea } from "./ui/ace-textarea";
@@ -8,11 +8,10 @@ import { cn } from "@/lib/utils";
 import { useToast } from "./ui/use-toast";
 import { Button } from "./ui/button";
 import { useRouter } from "next/navigation";
+import emailjs from "@emailjs/browser";
 
 const ContactForm = () => {
-  const [fullName, setFullName] = React.useState("");
-  const [email, setEmail] = React.useState("");
-  const [message, setMessage] = React.useState("");
+  const form = useRef<HTMLFormElement>(null);
   const [loading, setLoading] = React.useState(false);
 
   const { toast } = useToast();
@@ -21,59 +20,43 @@ const ContactForm = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     
-    // Basic validation
-    if (!fullName.trim() || !email.trim() || !message.trim()) {
-      toast({
-        title: "Validation Error",
-        description: "Please fill in all fields.",
-        variant: "destructive",
-        className: cn("top-0 mx-auto flex fixed md:top-4 md:right-4"),
-      });
-      return;
-    }
+    if (!form.current) return;
 
     setLoading(true);
+
     try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          fullName,
-          email,
-          message,
-        }),
-      });
-      
-      const data = await res.json();
-      
-      if (!res.ok) {
-        throw new Error(data.error || "Failed to send message");
-      }
-      
+      // Replace these with your actual EmailJS credentials
+      const SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || "YOUR_SERVICE_ID";
+      const TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || "YOUR_TEMPLATE_ID";
+      const PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || "YOUR_PUBLIC_KEY";
+
+      await emailjs.sendForm(
+        SERVICE_ID,
+        TEMPLATE_ID,
+        form.current,
+        PUBLIC_KEY
+      );
+
       toast({
         title: "Thank you!",
         description: "I'll get back to you as soon as possible.",
         variant: "default",
         className: cn("top-0 mx-auto flex fixed md:top-4 md:right-4"),
       });
-      
+
       // Clear form
-      setFullName("");
-      setEmail("");
-      setMessage("");
-      
+      form.current.reset();
+
       // Redirect after success
       const timer = setTimeout(() => {
         router.push("/");
         clearTimeout(timer);
       }, 1000);
-    } catch (err) {
-      console.error("Contact form error:", err);
+    } catch (error) {
+      console.error("EmailJS error:", error);
       toast({
         title: "Error",
-        description: err instanceof Error ? err.message : "Something went wrong! Please try again.",
+        description: "Something went wrong! Please try again.",
         className: cn(
           "top-0 w-full flex justify-center fixed md:max-w-7xl md:top-4 md:right-4"
         ),
@@ -83,40 +66,38 @@ const ContactForm = () => {
       setLoading(false);
     }
   };
+
   return (
-    <form className="min-w-7xl mx-auto sm:mt-4" onSubmit={handleSubmit}>
+    <form ref={form} className="min-w-7xl mx-auto sm:mt-4" onSubmit={handleSubmit}>
       <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4">
         <LabelInputContainer>
-          <Label htmlFor="fullname">Full name</Label>
+          <Label htmlFor="name">Full name</Label>
           <Input
-            id="fullname"
+            id="name"
+            name="name"
             placeholder="Your Name"
             type="text"
             required
-            value={fullName}
-            onChange={(e) => setFullName(e.target.value)}
           />
         </LabelInputContainer>
         <LabelInputContainer className="mb-4">
           <Label htmlFor="email">Email Address</Label>
           <Input
             id="email"
+            name="email"
             placeholder="you@example.com"
             type="email"
             required
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
           />
         </LabelInputContainer>
       </div>
       <div className="grid w-full gap-1.5 mb-4">
-        <Label htmlFor="content">Your Message</Label>
+        <Label htmlFor="message">Your Message</Label>
         <Textarea
-          placeholder="Tell me about about your project,"
-          id="content"
+          placeholder="Tell me about your project,"
+          id="message"
+          name="message"
           required
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
         />
         <p className="text-sm text-muted-foreground">
           I&apos;ll never share your data with anyone else. Pinky promise!
