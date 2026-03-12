@@ -1,9 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
-  eslint: {
-    ignoreDuringBuilds: true
-  }
+  output: "export",
+  images: {
+    unoptimized: true
+  },
+  basePath: "/portfolio",
+  assetPrefix: "/portfolio/",
+  reactStrictMode: true
 };
 
 export default nextConfig;
