@@ -2,8 +2,6 @@ import { EmailTemplate } from "@/components/email-template";
 import { Resend } from "resend";
 import { z } from "zod";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 const ContactSchema = z.object({
   fullName: z.string().min(2, "Full name must be at least 2 characters"),
   email: z.string().email("Invalid email address"),
@@ -12,6 +10,15 @@ const ContactSchema = z.object({
 
 export async function POST(req: Request) {
   try {
+    // Check if API key exists
+    const apiKey = process.env.RESEND_API_KEY;
+    if (!apiKey) {
+      return Response.json(
+        { message: "Contact form not configured yet. Please try again later." },
+        { status: 200 }
+      );
+    }
+
     const body = await req.json();
     
     // Validate input
@@ -24,6 +31,9 @@ export async function POST(req: Request) {
     }
 
     const { fullName, email, message } = validation.data;
+
+    // Initialize Resend only when API key exists
+    const resend = new Resend(apiKey);
 
     // Send email using Resend
     const { data, error } = await resend.emails.send({
