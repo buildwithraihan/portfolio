@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "deploy": "next build && if exist docs rmdir /s /q docs && move out docs"
+    "deploy": "next build"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
